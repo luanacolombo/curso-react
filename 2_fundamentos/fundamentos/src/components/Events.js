@@ -6,6 +6,14 @@ const Events = () => {
         console.log("Ativou o evento!");
     }; //função
 
+    const renderSomething = (x) => {
+        if (x) {
+            return <h1>Renderizando isso!</h1>
+        } else {
+            return <h1>Também posso renderizar isso!</h1>
+        }
+    }; //função que recebe x como argumento
+
     return (
         <div>
             <div>
@@ -19,8 +27,10 @@ const Events = () => {
                     }
                 }}>Clica aquim, por favor</button>
             </div>
+            {renderSomething(true)}
+            {renderSomething(false)}
         </div>
-    )
+    );
 };
 
 export default Events;
