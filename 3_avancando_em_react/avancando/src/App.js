@@ -29,7 +29,10 @@ function App() {
       {/*props*/}
       <ShowUserName name={userName} /> {/*esse componente tem acesso a uma prop chamada name com o valor da const declarada*/}
       {/*destructuring*/}
-      <CarDetails brand="VW" km={100000} color="Azul" />
+      <CarDetails brand="VW" km={100000} color="Azul" newCar={false} />
+      {/*reaproveitamento*/}
+      <CarDetails brand="Ford" color="Vermelha" km={0} newCar={true} />
+      <CarDetails brand="Fiat" color="Branco" km={4500} newCar={false} />
     </div>
   );
 }
