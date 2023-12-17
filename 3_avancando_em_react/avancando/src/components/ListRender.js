@@ -3,14 +3,14 @@ import { useState } from 'react'
 const ListRender = () => {
     const [list] = useState(["Matheus", "Pedro", "Josias", "Maria"]); //array do tipo lista
 
-    const [users, setUsers] = useState([
+    const [users, setUsers] = useState([ //array de users
         { id: 1, name: "Matheus", age: 31 },
         { id: 2, name: "João", age: 28 },
         { id: 3, name: "Pedro", age: 44 },
     ])
 
     const deleteRandom = () => {
-        const randomNumber = Math.floor(Math.random() * 4) //Math.floor arredonda pra baixo, *3 pois é o n. de itens da lista
+        const randomNumber = Math.floor(Math.random() * 4) //Math.floor arredonda pra baixo, *4 pois é o n. de itens da lista
 
         setUsers((prevUsers) => { //deletar, executa uma função, prevUsers resultado anterior dos usuários
             console.log(prevUsers) //mostra no console
