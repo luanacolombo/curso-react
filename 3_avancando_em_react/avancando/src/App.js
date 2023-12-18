@@ -10,6 +10,8 @@ import CarDetails from './components/CarDetails';
 import Fragment from './components/Fragment';
 import Container from './components/Container';
 import ExecuteFunction from './components/ExecuteFunction';
+import Message from './components/Message';
+import ChangeMessageState from './components/ChangeMessageState';
 
 function App() {
   const name = "Joaquim"
@@ -24,6 +26,12 @@ function App() {
   function showMessage() {
     console.log("Evento do componente pai!")
   }
+
+  const [message, setMessage] = useState("") //message consome e o setMessage altera o valor, estado gerenciado pelo componente pai
+
+  const handleMessage = (msg) => { //forma de gerenciar o estado
+    setMessage(msg);
+  } //handleMessage vai receber uma mensagem como argumento e vai alterar essa mensagem do state
 
   return (
     <div className="App">
@@ -66,6 +74,9 @@ function App() {
       </Container>
       {/*executar função*/}
       <ExecuteFunction myFunction={showMessage} /> {/*passa a função por meio de uma prop*/}
+      {/*state lift*/}
+      <Message msg={message} /> {/*envia a mensagem pro prop, componente que consome o estado*/}
+      <ChangeMessageState handleMessage={handleMessage} /> {/*componente altera e eleva o estado da mensagem p/ termos uma atualização e um reconsumo desse novo estado*/}
     </div>
   );
 }
