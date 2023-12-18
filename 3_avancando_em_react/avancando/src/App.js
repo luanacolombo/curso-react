@@ -8,6 +8,7 @@ import ManageData from './components/ManageData';
 import ShowUserName from './components/ShowUserName';
 import CarDetails from './components/CarDetails';
 import Fragment from './components/Fragment';
+import Container from './components/Container';
 
 function App() {
   const name = "Joaquim"
@@ -46,6 +47,13 @@ function App() {
       ))}
       {/*fragment*/}
       <Fragment propFragment="teste" />
+      {/*children, fica nesse formato quando queremos ter HTML dentro*/}
+      <Container myValue="testing"> {/*myValue="testing" é uma propriedade*/}
+        <p>E este é o conteúdo</p>
+      </Container>
+      <Container myValue="testing 2"> {/*myValue="testing 2" é uma propriedade*/}
+        <h5>Testanto o container</h5>
+      </Container>
     </div>
   );
 }
