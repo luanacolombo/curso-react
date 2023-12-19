@@ -12,6 +12,7 @@ import Container from './components/Container';
 import ExecuteFunction from './components/ExecuteFunction';
 import Message from './components/Message';
 import ChangeMessageState from './components/ChangeMessageState';
+import UserDetails from './components/UserDetails';
 
 function App() {
   const name = "Joaquim"
@@ -21,6 +22,12 @@ function App() {
     { id: 1, brand: "Ferrari", color: "Amarela", newCar: true, km: 0 },
     { id: 2, brand: "KIA", color: "Branco", newCar: false, km: 34343 },
     { id: 3, brand: "Renault", color: "Azul", newCar: false, km: 234 }
+  ]
+
+  const pessoas = [
+    { id: 4, nome: "Maria", idade: 30, profissao: "Engenheira", maior: true },
+    { id: 5, nome: "João", idade: 16, profissao: "Estudante", maior: false },
+    { id: 6, nome: "Carlos", idade: 40, profissao: "Vendedor", maior: true }
   ]
 
   function showMessage() {
@@ -77,6 +84,15 @@ function App() {
       {/*state lift*/}
       <Message msg={message} /> {/*envia a mensagem pro prop, componente que consome o estado*/}
       <ChangeMessageState handleMessage={handleMessage} /> {/*componente altera e eleva o estado da mensagem p/ termos uma atualização e um reconsumo desse novo estado*/}
+      {/*Tarefa 4*/}
+      {pessoas.map((pessoa) => (
+        <UserDetails
+          key={pessoa.id}
+          nome={pessoa.nome}
+          idade={pessoa.idade}
+          profissao={pessoa.profissao}
+          maior={pessoa.maior} />
+      ))}
     </div>
   );
 }
