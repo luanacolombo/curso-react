@@ -1,0 +1,12 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Helvetica;
+  /*exemplos mais centralizados na tela*/
+  padding-bottom: 500px;
+}
+
+h1 {
+  /*tudo que for h1 terá a cor vermelha*/
+  color: red;
+}
