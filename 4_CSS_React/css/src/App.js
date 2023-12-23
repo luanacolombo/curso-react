@@ -1,6 +1,7 @@
 import './App.css';
 import MyComponent from './components/MyComponent';
 import { useState } from "react";
+import Title from './components/Title';
 
 function App() {
   const n = 15
@@ -24,8 +25,11 @@ function App() {
       <h2 style={name === "Matheus" ? ({ color: "green", backgroundColor: "#000" }) : null}>Teste nome</h2> {/*primeiro () se for verdadeiro e segundo se for falso*/}
       {/*Classe dinâmina*/}
       <h2 className={redTitle ? "red-title" : "title"}>Este título vai ter classe dinâmica</h2> {/*primeiro () se for verdadeiro e segundo se for falso*/}
+      {/*CSS Modules*/}
+      <Title />
     </div>
   );
+
 }
 
 export default App;
