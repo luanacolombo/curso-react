@@ -10,3 +10,15 @@ h1 {
   /*tudo que for h1 terá a cor vermelha*/
   color: red;
 }
+
+.red-title {
+  background-color: black;
+  color: red;
+  padding: 15px;
+  border: 5px solid red;
+}
+
+.title {
+  background-color: black;
+  color: white;
+}
