@@ -20,6 +20,10 @@ const MyForm = ({ user }) => {
         event.preventDefault() //formulário não irá mais recarregar a página, faz o envio tradicional do formulário
         console.log("Enviando o formulário")
         console.log(name, email)
+
+        //7 - limpar form
+        setName("") //atualiza para um valor vazio
+        setEmail("") //atualiza para um valor vazio
     }
 
     return (
