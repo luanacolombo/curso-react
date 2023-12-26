@@ -12,7 +12,8 @@ const MyForm = () => {
         setName(e.target.value) //muda o estado cada vez que é digitado algo no input
     }
 
-    console.log(name)
+    console.log(name) //mostra no console as alterações
+    console.log(email) //mostra no console as alterações
 
     return (
         <div>
@@ -25,7 +26,7 @@ const MyForm = () => {
                 {/*2 - label envolvendo input*/}
                 <label>
                     <span>E-mail:</span>
-                    <input type="email" name="email" placeholder="Digite o seu e-mail" />
+                    <input type="email" name="email" placeholder="Digite o seu e-mail" onChange={(e) => setEmail(e.target.value)} />
                 </label>
                 <input type="submit" value="Enviar" />
             </form>
