@@ -7,6 +7,37 @@ body {
   font-family: Helvetica;
   margin: 0;
   padding: 0;
+  /*deixa a tela em degradê*/
   background: linear-gradient(180deg, rgba(9, 35, 175, 1) 0%, rgba(0, 0, 0, 1) 100%);
   color: white;
+}
+
+button {
+  /*cor de fundo*/
+  background: #1646a0;
+  /*cor de texto*/
+  color: white;
+  /*espaçamento no topo*/
+  padding: 0 45px;
+  /*borda*/
+  border: 2px solid white;
+  /*aspecto arredondado da borda*/
+  border-radius: 25px;
+  /*altura*/
+  height: 50px;
+  /*texto em caixa alta*/
+  text-transform: uppercase;
+  /*texto em negrito*/
+  font-weight: bold;
+  /*aumenta a fonte do botão*/
+  font-size: 1.2em;
+  /*aparece a "mãozinha" quando passar o cursor por cima*/
+  cursor: pointer;
+  /*efeito de rover, mudança da cor do botão*/
+  transition: .4s;
+}
+
+button:hover {
+  /*cor do botão quando passar o mouse por cima*/
+  background-color: #0923af;
 }
