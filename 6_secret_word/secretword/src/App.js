@@ -26,12 +26,12 @@ function App() {
   const pickWordAndCategory = () => {
     //pick a random category
     const categories = Object.keys(words) //todas as categorias
-    const category = categories[Math.floor[Math.random() * Object.keys(categories).length]] //pega uma aleatória, de 0 ao número de categorias que tem, Math.floor arredonda pra baixo o indice
+    const category = categories[Math.floor(Math.random() * Object.keys(categories).length)] //pega uma aleatória, de 0 ao número de categorias que tem, Math.floor arredonda pra baixo o indice
 
     console.log(category)
 
     //pick a random word
-    const word = words[category][Math.floor[Math.random() * words[category].length]] //da acesso a todas as palavras da categorias e pega uma categoria aleatória
+    const word = words[category][Math.floor(Math.random() * words[category].length)] //da acesso a todas as palavras da categorias e pega uma categoria aleatória
 
     console.log(word)
 
