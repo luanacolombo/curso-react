@@ -19,13 +19,26 @@ function App() {
   const [gameStage, setGameStage] = useState(stages[0].name)
   const [words] = useState(wordsList)
 
-  console.log(words)
+  //start the secret word game
+  const startGame = () => {
+    setGameStage(stages[1].name) //muda o estado do jogo
+  }
+
+  //process the letter input, processa as letras digitadas
+  const verifyLetter = () => {
+    setGameStage(stages[2].name)
+  }
+
+  //restarts the game, reinicia o jogo
+  const retry = () => {
+    setGameStage(stages[0].name)
+  }
 
   return (
     <div className="App">
-      {gameStage === 'start' && <StartScreen />} {/*quando o estágio do game for start, irá mostrar o StartScreen*/}
-      {gameStage === 'game' && <Game />} {/*quando o estágio do game for game, irá mostrar o Game*/}
-      {gameStage === 'end' && <GameOver />} {/*quando o estágio do game for end, irá mostrar o GameOver*/}
+      {gameStage === 'start' && <StartScreen startGame={startGame} />} {/*quando o estágio do game for start, irá mostrar o StartScreen*/}
+      {gameStage === 'game' && <Game verifyLetter={verifyLetter} />} {/*quando o estágio do game for game, irá mostrar o Game*/}
+      {gameStage === 'end' && <GameOver retry={retry} />} {/*quando o estágio do game for end, irá mostrar o GameOver*/}
     </div>
   );
 }

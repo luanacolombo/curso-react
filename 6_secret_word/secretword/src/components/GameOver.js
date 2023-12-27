@@ -1,8 +1,11 @@
 import "./GameOver.css";
-
-const GameOver = () => {
+//tela quando der game over
+const GameOver = ({ retry }) => {
     return (
-        <div>GameOver</div>
+        <div>
+            <h1>Game Over</h1>
+            <button onClick={retry}>Resetar jogo</button> {/*leva para a página inicial do StartScreen*/}
+        </div>
     )
 }
 
