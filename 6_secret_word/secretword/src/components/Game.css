@@ -1,0 +1,64 @@
+.game h1 {
+    /*titulo principal*/
+    font-size: 2.5em;
+}
+
+.points span {
+    font-weight: bold;
+}
+
+.tip span {
+    color: #ecfa00;
+}
+
+.wordContainer {
+    /*margem*/
+    margin: 1.5em;
+    /*espaçamento*/
+    padding: 1.5em;
+    border: 20px solid #ecfa00;
+    display: flex;
+}
+
+.letter,
+.blankSquare {
+    font-size: 70px;
+    /*alinha o texto dentro do quadrado*/
+    line-height: 1.5;
+    /*borda do quadrado da letra*/
+    border: 3px solid #000;
+    /*altura*/
+    height: 100px;
+    /*largura*/
+    width: 100px;
+    /*letra maiúscula*/
+    text-transform: uppercase;
+    /*cor do fundo*/
+    background-color: #FFF;
+    /*cor da letra*/
+    color: #000;
+    /*deixa as letras em negrito*/
+    font-weight: bold;
+}
+
+.letterContainer {
+    margin-bottom: 1.2em;
+}
+
+.letterContainer form {
+    /*botão fica do lado do input*/
+    display: flex;
+    /*centraliza o input e o botão*/
+    align-items: center;
+    justify-content: center;
+}
+
+.letterContainer input {
+    height: 50px;
+    width: 50px;
+    font-size: 2em;
+    /*alinha o texto no centro*/
+    text-align: center;
+    /*afarta o input do botão*/
+    margin-right: 1em;
+}
