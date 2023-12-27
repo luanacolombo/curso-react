@@ -126,7 +126,7 @@ function App() {
         guesses={guesses}
         score={score}
       />} {/*quando o estágio do game for game, irá mostrar o Game*/}
-      {gameStage === 'end' && <GameOver retry={retry} />} {/*quando o estágio do game for end, irá mostrar o GameOver*/}
+      {gameStage === 'end' && <GameOver retry={retry} score={score} />} {/*quando o estágio do game for end, irá mostrar o GameOver*/}
     </div>
   );
 }
