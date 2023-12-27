@@ -23,6 +23,11 @@ function App() {
   const [pickedCategory, setPickedCategory] = useState("") //categoria escolhida de forma aleatória
   const [letters, setLetters] = useState([]) //letras escolhidas pelo usuário
 
+  const [guessedLetters, setGuessedLetters] = useState([]) //letras adivinhadas
+  const [wrongLetters, setWrongLetters] = useState([]) //letras erradas
+  const [guesses, setGuesses] = useState(3) //tentativas do usuário
+  const [score, setScore] = useState(0) //pontuação do usuário
+
   const pickWordAndCategory = () => {
     //pick a random category
     const categories = Object.keys(words) //todas as categorias
@@ -54,7 +59,7 @@ function App() {
     //fill states
     setPickedWord(word)
     setPickedCategory(category)
-    setLetters(letters)
+    setLetters(wordLetters)
 
     setGameStage(stages[1].name) //muda o estado do jogo
   }
@@ -72,7 +77,16 @@ function App() {
   return (
     <div className="App">
       {gameStage === 'start' && <StartScreen startGame={startGame} />} {/*quando o estágio do game for start, irá mostrar o StartScreen*/}
-      {gameStage === 'game' && <Game verifyLetter={verifyLetter} />} {/*quando o estágio do game for game, irá mostrar o Game*/}
+      {gameStage === 'game' && <Game
+        verifyLetter={verifyLetter}
+        pickedWord={pickedWord}
+        pickedCategory={pickedCategory}
+        letters={letters}
+        guessedLetters={guessedLetters}
+        wrongLetters={wrongLetters}
+        guesses={guesses}
+        score={score}
+      />} {/*quando o estágio do game for game, irá mostrar o Game*/}
       {gameStage === 'end' && <GameOver retry={retry} />} {/*quando o estágio do game for end, irá mostrar o GameOver*/}
     </div>
   );
