@@ -8,6 +8,8 @@ const MyForm = ({ user }) => {
     const [name, setName] = useState(user ? user.name : "") //se o usuário existe, imprime o nome, se não, vazio
     const [email, setEmail] = useState(user ? user.email : "") //se o email existe, imprime o email, se não, vazio
 
+    const [bio, setBio] = useState("")
+
     //maneira para resgatar o valor do input
     const handleName = (e) => { //função p/ lidar com o nome, que recebe o evento (e)
         setName(e.target.value) //muda o estado cada vez que é digitado algo no input
@@ -19,11 +21,12 @@ const MyForm = ({ user }) => {
     const handleSubmit = (event) => {
         event.preventDefault() //formulário não irá mais recarregar a página, faz o envio tradicional do formulário
         console.log("Enviando o formulário")
-        console.log(name, email)
+        console.log(name, email, bio)
 
         //7 - limpar form
         setName("") //atualiza para um valor vazio
         setEmail("") //atualiza para um valor vazio
+        setBio("") //atualiza para um valor vazio
     }
 
     return (
@@ -41,6 +44,11 @@ const MyForm = ({ user }) => {
                     <span>E-mail:</span>
                     {/*4 - simplificação de manipulação de state*/}
                     <input type="email" name="email" placeholder="Digite o seu e-mail" onChange={(e) => setEmail(e.target.value)} value={email} />
+                </label>
+                {/*8 - textarea*/}
+                <label>
+                    <span>Bio:</span>
+                    <textarea name="bio" placeholder="Descrição do usuário" onChange={(e) => setBio(e.target.value)} value={bio}></textarea>
                 </label>
                 <input type="submit" value="Enviar" />
             </form>
