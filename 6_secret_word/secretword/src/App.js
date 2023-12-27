@@ -15,6 +15,8 @@ const stages = [
   { id: 3, name: "end" },
 ]
 
+const guessesQty = 3
+
 function App() {
   const [gameStage, setGameStage] = useState(stages[0].name)
   const [words] = useState(wordsList)
@@ -25,7 +27,7 @@ function App() {
 
   const [guessedLetters, setGuessedLetters] = useState([]) //letras adivinhadas
   const [wrongLetters, setWrongLetters] = useState([]) //letras erradas
-  const [guesses, setGuesses] = useState(3) //tentativas do usuário
+  const [guesses, setGuesses] = useState(guessesQty) //tentativas do usuário
   const [score, setScore] = useState(0) //pontuação do usuário
 
   const pickWordAndCategory = () => {
@@ -84,14 +86,30 @@ function App() {
       setWrongLetters((actualWrongLetters) => [
         ...actualWrongLetters, normalizedLetter
       ])
+
+      setGuesses((actualGuesses) => actualGuesses - 1) //diminui uma tentativa, vai diminuindo conforme o usuário botar letras erradas
     }
   }
 
-  console.log(guessedLetters)
-  console.log(wrongLetters)
+  const clearLetterStates = () => {
+    setGuessedLetters([])
+    setWrongLetters([])
+  }
+
+  useEffect(() => { //monitora algum dado, terá um função que será executada cada vez que o dado for alterado
+    if (guesses <= 0) {
+      //reset all states
+      clearLetterStates() //limpa o state das letras
+
+      setGameStage(stages[2].name)
+    }
+  }, [guesses]) //dado a ser monitorado
 
   //restarts the game, reinicia o jogo
   const retry = () => {
+    setScore(0)
+    setGuesses(guessesQty)
+
     setGameStage(stages[0].name)
   }
 
