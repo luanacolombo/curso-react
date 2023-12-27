@@ -30,23 +30,22 @@ function App() {
   const [guesses, setGuesses] = useState(guessesQty) //tentativas do usuário
   const [score, setScore] = useState(0) //pontuação do usuário
 
-  const pickWordAndCategory = () => {
+  const pickWordAndCategory = useCallback(() => {
     //pick a random category
     const categories = Object.keys(words) //todas as categorias
     const category = categories[Math.floor(Math.random() * Object.keys(categories).length)] //pega uma aleatória, de 0 ao número de categorias que tem, Math.floor arredonda pra baixo o indice
 
-    console.log(category)
-
     //pick a random word
     const word = words[category][Math.floor(Math.random() * words[category].length)] //da acesso a todas as palavras da categorias e pega uma categoria aleatória
 
-    console.log(word)
-
     return { word, category }
-  }
+  }, [words])
 
   //start the secret word game
-  const startGame = () => {
+  const startGame = useCallback(() => {
+    //clear all letters
+    clearLetterStates()
+
     //pick word and pick category
     const { word, category } = pickWordAndCategory()
 
@@ -55,16 +54,13 @@ function App() {
 
     wordLetters = wordLetters.map((l) => l.toLowerCase()) //pega cada uma das letras, onde todas estarão minúsculas
 
-    console.log(word, category)
-    console.log(wordLetters)
-
     //fill states
     setPickedWord(word)
     setPickedCategory(category)
     setLetters(wordLetters)
 
     setGameStage(stages[1].name) //muda o estado do jogo
-  }
+  }, [pickWordAndCategory])
 
   //process the letter input, processa as letras digitadas
   const verifyLetter = (letter) => {
@@ -96,6 +92,7 @@ function App() {
     setWrongLetters([])
   }
 
+  //check if guesses ended
   useEffect(() => { //monitora algum dado, terá um função que será executada cada vez que o dado for alterado
     if (guesses <= 0) {
       //reset all states
@@ -104,6 +101,20 @@ function App() {
       setGameStage(stages[2].name)
     }
   }, [guesses]) //dado a ser monitorado
+
+  //check win condition
+  useEffect(() => { //monitora algum dado, terá um função que será executada cada vez que o dado for alterado
+    const uniqueLetters = [... new Set(letters)] //array de letras únicas
+
+    //win condition
+    if (guessedLetters.length === uniqueLetters.length) {
+      //add score
+      setScore((actualScore) => actualScore += 100)
+
+      //restart game with new word
+      startGame()
+    }
+  }, [guessedLetters, letters, startGame])
 
   //restarts the game, reinicia o jogo
   const retry = () => {
