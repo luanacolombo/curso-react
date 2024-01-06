@@ -39,6 +39,15 @@ function App() {
       },
       body: JSON.stringify(product), //corpo da requisição 
     })
+
+    //3 - carregamento dinâmico
+    const addedProduct = await res.json()
+
+    setProducts((prevProducts) => [...prevProducts, addedProduct]) //add os produtos automaticamente, sem precisar dar F5
+
+    setName("") //reseta os states, ou seja, limpa as caixas de inclusão de produtos
+    setPrice("") //reseta os states, ou seja, limpa as caixas de inclusão de produtos
+
   }
 
   return (
