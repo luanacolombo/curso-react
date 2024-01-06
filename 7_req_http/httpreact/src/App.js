@@ -11,7 +11,7 @@ function App() {
   const [products, setProducts] = useState([]); //products é a lista de produtos que está no data > db.json, products salva e setProducts ajuda a colocar os produtos em algum lugar
 
   //4 - custom
-  const { data: items } = useFetch(url) //importa o data do useFetch, faz com que tenhamos acesso aos dados
+  const { data: items, httpConfig } = useFetch(url) //importa o data do useFetch, faz com que tenhamos acesso aos dados
 
   const [name, setName] = useState("")
   const [price, setPrice] = useState("")
@@ -37,19 +37,22 @@ function App() {
       price
     }
 
-    const res = await fetch(url, { //requisição
-      //esse segundo obj configura como vai ser a requisição
-      method: "POST",
-      headers: { //cabeçalios da requisição, podemos transmitir na requisição que tipo de conteúdo estamos manipulando
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(product), //corpo da requisição 
-    })
+    //  const res = await fetch(url, { //requisição
+    //    //esse segundo obj configura como vai ser a requisição
+    //    method: "POST",
+    //    headers: { //cabeçalios da requisição, podemos transmitir na requisição que tipo de conteúdo estamos manipulando
+    //      "Content-Type": "application/json"
+    //    },
+    //    body: JSON.stringify(product), //corpo da requisição 
+    //  })
 
     //3 - carregamento dinâmico
-    const addedProduct = await res.json()
+    //  const addedProduct = await res.json()
 
-    setProducts((prevProducts) => [...prevProducts, addedProduct]) //add os produtos automaticamente, sem precisar dar F5
+    //  setProducts((prevProducts) => [...prevProducts, addedProduct]) //add os produtos automaticamente, sem precisar dar F5
+
+    //5 - refatorando post
+    httpConfig(product, "POST") //manda o produto(dado) e o POST
 
     setName("") //reseta os states, ou seja, limpa as caixas de inclusão de produtos
     setPrice("") //reseta os states, ou seja, limpa as caixas de inclusão de produtos
