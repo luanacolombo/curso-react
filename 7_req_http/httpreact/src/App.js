@@ -2,25 +2,31 @@ import './App.css';
 
 import { useState, useEffect } from "react";
 
+//4 - custom hook
+import { useFetch } from './hooks/useFetch';
+
 const url = "http://localhost:3000/products"; //url base da API
 
 function App() {
   const [products, setProducts] = useState([]); //products é a lista de produtos que está no data > db.json, products salva e setProducts ajuda a colocar os produtos em algum lugar
 
+  //4 - custom
+  const { data: items } = useFetch(url) //importa o data do useFetch, faz com que tenhamos acesso aos dados
+
   const [name, setName] = useState("")
   const [price, setPrice] = useState("")
 
   //1 - resgatando dados
-  useEffect(() => { //chamada assincrona c/ o useEffect
-    async function fetchData() {
-      const res = await fetch(url); //res: resposta da requisição
+  //useEffect(() => { //chamada assincrona c/ o useEffect
+  //  async function fetchData() {
+  //    const res = await fetch(url); //res: resposta da requisição
 
-      const data = await res.json(); //resposta vem em json(texto puro), precisamos transformar em obj
+  //    const data = await res.json(); //resposta vem em json(texto puro), precisamos transformar em obj
 
-      setProducts(data);
-    }
-    fetchData();
-  }, []);
+  //    setProducts(data);
+  //  }
+  //  fetchData();
+  //}, []);
 
   //2 - add de produtos
   const handleSumit = async (e) => { //função que envia o formulário
@@ -54,7 +60,7 @@ function App() {
     <div className="App">
       <h1>Lista de Produtos</h1>
       <ul> {/*loop de produtos, onde vamos exibir cada um deles*/}
-        {products.map((product) => (
+        {items && items.map((product) => ( //quando os itens forem preenchidos, retorna a lista (isso com o custom hooks)
           <li key={product.id}>
             {product.name} - R$: {product.price}
           </li>
