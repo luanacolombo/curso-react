@@ -84,7 +84,9 @@ function App() {
             Preço:
             <input type="number" value={price} name="price" onChange={(e) => setPrice(e.target.value)} /> {/*onChange faz a manipulação do dado pegando o evento de digitar e extraindo o valor do input após esse evento*/}
           </label>
-          <input type="submit" value="Criar" />
+          {/*7 - state de loading no post*/}
+          {loading && <input type="submit" disabled value="Aguarde" />}
+          {loading && <input type="submit" value="Criar" />}
         </form>
       </div>
     </div>

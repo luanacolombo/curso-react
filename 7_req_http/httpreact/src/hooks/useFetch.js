@@ -31,20 +31,20 @@ export const useFetch = (url) => { //função que exportamos, useFetch nome do a
         const fetchData = async () => {
 
             //6 - loading
-            setLoading(true) //chama a função e começa a carregar os dados
+            setLoading(true); //chama a função e começa a carregar os dados
 
-            const res = await fetch(url) //request para a URL
+            const res = await fetch(url); //request para a URL
 
-            const json = await res.json() //recebemos os dados como eles vem da API
+            const json = await res.json(); //recebemos os dados como eles vem da API
 
-            setData(json)
+            setData(json);
 
-            setLoading(false) //após a exibição dos dados na tela, passamos para false, pois já temos os dados
+            setLoading(false); //após a exibição dos dados na tela, passamos para false, pois já temos os dados
         }
 
-        fetchData() //chama a função pra executar ela
+        fetchData(); //chama a função pra executar ela
 
-    }, [url, callFetch]) //[url] é a dependencia dele, callFetch para mapear
+    }, [url, callFetch]); //[url] é a dependencia dele, callFetch para mapear
     //sempre que alterar chamamo o fetch novamente para poder trazer os dados de novo
 
     //5 - refatorando post
