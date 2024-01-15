@@ -11,7 +11,7 @@ function App() {
   const [products, setProducts] = useState([]); //products é a lista de produtos que está no data > db.json, products salva e setProducts ajuda a colocar os produtos em algum lugar
 
   //4 - custom
-  const { data: items, httpConfig, loading } = useFetch(url) //importa o data do useFetch, faz com que tenhamos acesso aos dados
+  const { data: items, httpConfig, loading, error } = useFetch(url) //importa o data do useFetch, faz com que tenhamos acesso aos dados
 
   const [name, setName] = useState("")
   const [price, setPrice] = useState("")
@@ -64,7 +64,8 @@ function App() {
       <h1>Lista de Produtos</h1>
       {/*6 - loading*/}
       {loading && <p>Carregando dados...</p>} {/*se o loading está true, paragrafo de carregando dados*/}
-      {!loading && (
+      {error && <p>{error}</p>} {/*se tiver o erro, exibe o erro*/}
+      {!error && ( //se não tiver erro exibe os produtos, se tiver erro não exibe
         <ul> {/*loop de produtos, onde vamos exibir cada um deles*/}
           {items && items.map((product) => ( //quando os itens forem preenchidos, retorna a lista (isso com o custom hooks)
             <li key={product.id}>

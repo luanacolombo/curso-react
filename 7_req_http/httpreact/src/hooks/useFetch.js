@@ -12,6 +12,9 @@ export const useFetch = (url) => { //função que exportamos, useFetch nome do a
     //6 - loading
     const [loading, setLoading] = useState(false)
 
+    //7 - tratando erros
+    const [error, setError] = useState(null)
+
     const httpConfig = (data, method) => { //função que recebe os dados de envio e também o método da requisição
         if (method === "POST") { //se o método for POST
             setConfig({ //configuração da requisição
@@ -29,15 +32,19 @@ export const useFetch = (url) => { //função que exportamos, useFetch nome do a
     useEffect(() => { //criação do request que vai envocar a requisição da API pra gente
 
         const fetchData = async () => {
-
             //6 - loading
             setLoading(true); //chama a função e começa a carregar os dados
 
-            const res = await fetch(url); //request para a URL
+            try {
+                const res = await fetch(url); //request para a URL
 
-            const json = await res.json(); //recebemos os dados como eles vem da API
+                const json = await res.json(); //recebemos os dados como eles vem da API
 
-            setData(json);
+                setData(json);
+
+            } catch (error) {
+                setError("Houve algum erro ao carregar os dados!")
+            }
 
             setLoading(false); //após a exibição dos dados na tela, passamos para false, pois já temos os dados
         }
@@ -65,5 +72,5 @@ export const useFetch = (url) => { //função que exportamos, useFetch nome do a
         httpRequest()
     }, [config, method, url]) //configs sendo mapeadas
 
-    return { data, httpConfig, loading } //dados que vamos usar na aplicação
+    return { data, httpConfig, loading, error } //dados que vamos usar na aplicação
 }
