@@ -1,0 +1,31 @@
+nav {
+    /*um do lado do outro*/
+    display: flex;
+    /*centralizar os elementos*/
+    justify-content: center;
+}
+
+nav a {
+    /*todos os links vão ter margem de 0 em cima e embaixo e 10px nas laterais*/
+    margin: 0 10px;
+    /*preenchimento interno do texto pra borda no input*/
+    padding: 5px;
+    /*tira o _ dos links*/
+    text-decoration: none;
+    /*cor do link*/
+    color: #000;
+}
+
+/*houver nos links*/
+nav a:hover {
+    color: #ccc;
+}
+
+/*maneira de identificar qual link o usuário está*/
+.active {
+    /*cor de fundo*/
+    background-color: #000;
+    /*cor de texto*/
+    color: #fff;
+
+}
