@@ -32,7 +32,30 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.add-product {
+  border-top: 1px solid #000;
+}
+
+form {
+  display: flex;
+  /*posição colunar*/
+  flex-direction: column;
+  /*alinha no centro*/
+  align-items: center;
+  /*tanto na horizontal quanto na vertical*/
+  justify-content: center;
+}
+
+form input {
+  display: flex;
+  /*texto em cima e input em baixo*/
+  flex-direction: column;
+  /*afasta um do outro*/
+  margin-bottom: 15px;
 }
